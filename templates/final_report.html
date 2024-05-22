@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Data Visualization</title>
+    <style>
+        .charts_container {
+            display: flex; /* Use flexbox to arrange elements in a row */
+            margin-bottom: 20px; /* Add margin at the bottom for spacing */
+            border-bottom: 1px solid #ccc; /* Add border at the bottom for visual separation */
+
+            }
+        .total_container{
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .total_card{
+            text-align : center;
+            background-color: #12B3EB;
+            padding: 10px;
+            flex:1;
+            margin-right: 20px;
+<!--            margin-left: auto;-->
+<!--            margin-right: auto;-->
+        }
+
+         .exercisecard {
+            text-align : center;
+            flex: 1; /* Each exercise card takes up equal space */
+            margin-right: 20px; /* Add margin for spacing between exercise cards */
+            background-color: #12B3EB; /* Background color for exercise cards */
+            padding: 10px; /* Add padding for better appearance */
+        }
+
+        /* Remove margin from the last element in the row */
+        .exercisecard:last-child {
+            margin-right: 0;
+        }
+
+        #pie_chart_placeholder {
+            flex: 4; /* Pie chart takes 30% of the space */
+            margin: 10px; /* Add margin for spacing */
+        }
+
+        #bar_graph_placeholder {
+            flex: 6; /* Bar graph takes 70% of the space */
+            margin: 10px; /* Add margin for spacing */
+        }
+
+        #pie_chart_placeholder img,
+        #bar_graph_placeholder img {
+            width: 100%; /* Ensure images fill their respective containers */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+    </style>
+
+</head>
+<body>
+<h1 align="center">Exercise Report</h1>
+<div class="total_container">
+    <div class="total_card">
+        <b>Total Calories burnt</b><br>
+        {{total_calories}}
+    </div>
+    <div class="total_card">
+        <b>Body Weight</b><br>
+        {{body_weight}}
+    </div>
+</div>
+<div class="charts_container">
+    <div class="exercisecard">
+        <b>Bicep Curls</b> <br>
+        reps: {{reps_dct.get('bicep_curl',0)}}<br>
+        calories : {{clorie_dct.get('bicep_curl',0)}}
+    </div>
+    <div class="exercisecard">
+        <b>Pushups</b> <br>
+        reps: {{reps_dct.get('pushup',0)}}<br>
+        calories : {{clorie_dct.get('pushup',0)}}
+    </div>
+    <div class="exercisecard">
+        <b>T Pose</b> <br>
+        Duration(seconds): {{reps_dct.get('T Pose',0)}}<br>
+        calories : {{clorie_dct.get('T Pose',0)}}
+    </div>
+</div>
+<div class="charts_container">
+    <div class="exercisecard">
+        <b>Tree Pose</b> <br>
+        Duration(seconds): {{reps_dct.get('Tree Pose',0)}}<br>
+        calories : {{clorie_dct.get('Tree Pose',0)}}
+
+    </div>
+    <div class="exercisecard">
+        <b>Warrior Pose</b> <br>
+        Duration(seconds): {{reps_dct.get('Warrior II Pose',0)}}<br>
+        calories : {{clorie_dct.get('Warrior II Pose',0)}}
+    </div>
+    <div class="exercisecard">
+        <b>Plank Pose</b> <br>
+        Duration(seconds): {{reps_dct.get('Plank Pose',0)}}<br>
+        calories : {{clorie_dct.get('Plank Pose',0)}}
+
+    </div>
+</div>
+<div class="charts_container">
+    <!-- Placeholder for pie chart -->
+    <!--<h2>Pie Chart: Percentage Contribution of Each Exercise</h2>-->
+    <div id="pie_chart_placeholder">
+        <img src="{{url_for('static',filename='graphs/pie_chart.png')}}" alt="Pie Chart">
+    </div>
+
+    <!-- Placeholder for bar graph -->
+    <!--<h2>Bar Graph: Calories Burnt by Each Exercise</h2>-->
+    <div id="bar_graph_placeholder">
+        <img src="{{url_for('static',filename='graphs/bar_graph.png')}}" alt="Bar Graph">
+    </div>
+
+</div>
+
+</body>
+</html>
